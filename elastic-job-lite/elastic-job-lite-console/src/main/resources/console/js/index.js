@@ -1,31 +1,27 @@
-$(document).ready(function() {
-    var jobName = GetQueryParam("jobName");
-    var serverIp = GetQueryParam("serverIp");
-    if(null != jobName){
-        $('#content').load('job_detail.html');
-    }
-    else if(null != serverIp){
-        $('#content').load('server_detail.html');
-    }
-    else{
-        $('#content').load('registry_center.html');
-        renderRegistryCenterForDashboardNav();
-        renderJobsForDashboardNav();
-        renderJServersForDashboardNav();
-    }
-    $('#registry-center-dimension').click(function() {
-        $('#content').load('registry_center.html');
+$(function() {
+    $("#content").load("html/global/registry_center.html");
+    $("#reg-center").click(function() {
+        $("#content").load("html/global/registry_center.html");
     });
-    $('#overview').click(function() {
-        $('#content').load('overview.html');
+    $("#event-trace-data-source").click(function() {
+        $("#content").load("html/global/event_trace_data_source.html");
     });
-    $('#jobs-dimension').click(function() {
-        $('#content').load('job_detail.html');
+    $("#job-status").click(function() {
+        $("#content").load("html/status/job/jobs_status_overview.html");
     });
-    $('#servers-dimension').click(function() {
-        $('#content').load('server_detail.html');
+    $("#server-status").click(function() {
+        $("#content").load("html/status/server/servers_status_overview.html");
     });
-    $('#help').click(function() {
-        $('#content').load('help.html');
+    $("#event-trace-history").click(function() {
+        $("#content").load("html/history/job_event_trace_history.html");
     });
+    $("#status-history").click(function() {
+        $("#content").load("html/history/job_status_history.html");
+    });
+    $("#help").click(function() {
+        $("#content").load("html/help/help.html", null, function(){
+            doLocale();
+        });
+    });
+    switchLanguage();
 });
